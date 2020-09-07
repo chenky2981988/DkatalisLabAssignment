@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
+
+        <View
+            android:id="@+id/top_bg_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/light_gray"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_imageview"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:civ_border_color="@android:color/white"
+            app:civ_border_width="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/top_bg_view"
+            app:layout_constraintEnd_toEndOf="@+id/top_bg_view"
+            app:layout_constraintStart_toStartOf="@+id/top_bg_view"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.30" />
+
+        <TextView
+            android:id="@+id/profile_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif"
+            android:singleLine="true"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_imageview"
+            tools:text="My Name is" />
+
+        <TextView
+            android:id="@+id/profile_title_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-black"
+            android:lines="2"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_title"
+            tools:text="Chirag Sidhiwala" />
+
+        <ImageView
+            android:id="@+id/profile_name"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_birthday"
+            app:layout_constraintEnd_toStartOf="@+id/profile_birthday"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_profile_user" />
+
+        <ImageView
+            android:id="@+id/profile_birthday"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_location"
+            app:layout_constraintEnd_toStartOf="@+id/profile_location"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profile_name"
+            app:layout_constraintTop_toTopOf="@+id/profile_location"
+            app:srcCompat="@drawable/ic_calendar" />
+
+        <ImageView
+            android:id="@+id/profile_location"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_call"
+            app:layout_constraintEnd_toStartOf="@+id/profile_call"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profile_birthday"
+            app:layout_constraintTop_toTopOf="@+id/profile_call"
+            app:srcCompat="@drawable/ic_location" />
+
+        <ImageView
+            android:id="@+id/profile_call"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_email"
+            app:layout_constraintEnd_toStartOf="@+id/profile_email"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profile_location"
+            app:layout_constraintTop_toTopOf="@+id/profile_email"
+            app:srcCompat="@drawable/ic_call" />
+
+        <ImageView
+            android:id="@+id/profile_email"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_password"
+            app:layout_constraintEnd_toStartOf="@+id/profile_password"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profile_call"
+            app:layout_constraintTop_toTopOf="@+id/profile_password"
+            app:srcCompat="@drawable/ic_email" />
+
+        <ImageView
+            android:id="@+id/profile_password"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profile_email"
+            app:layout_constraintTop_toBottomOf="@+id/profile_title_data"
+            app:srcCompat="@drawable/ic_lock" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

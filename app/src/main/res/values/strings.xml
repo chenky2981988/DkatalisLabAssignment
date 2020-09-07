@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RandomPeopleCarousel</string>
+    <string name="favourite">Favourite</string>
+    <string name="name_header">Hi, My name is</string>
+    <string name="birthday_header">My birthday is</string>
+    <string name="address_header">My address is</string>
+    <string name="phone_header">My phone number is</string>
+    <string name="email_header">My email address is</string>
+    <string name="password_header">My password is</string>
+</resources>
