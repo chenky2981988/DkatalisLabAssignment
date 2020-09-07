@@ -11,6 +11,7 @@ import retrofit2.http.Query
  */
 interface ApiService {
 
+    //Api to get Random User
     @GET("api/0.4/")
     suspend fun getRandomUser(@Query("randomapi") randomapi: String): Response<RandomPeopleModel>
 }

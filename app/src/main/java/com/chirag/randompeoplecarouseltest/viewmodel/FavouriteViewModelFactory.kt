@@ -14,6 +14,9 @@ import kotlinx.coroutines.InternalCoroutinesApi
 /**
  * Created by Chirag Sidhiwala on 6/9/20.
  */
+/**
+ * Factory class to create ViewModel object
+ */
 class FavouriteViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")

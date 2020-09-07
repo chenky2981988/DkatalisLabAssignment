@@ -13,6 +13,9 @@ import kotlinx.coroutines.InternalCoroutinesApi
 /**
  * Created by Chirag Sidhiwala on 6/9/20.
  */
+/**
+ * Factory class to create ViewModel object
+ */
 @FlowPreview
 @ExperimentalCoroutinesApi
 @InternalCoroutinesApi

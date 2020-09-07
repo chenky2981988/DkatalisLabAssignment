@@ -1,6 +1,5 @@
 package com.chirag.randompeoplecarouseltest.swipecard
 
-import android.content.Context
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -24,8 +23,7 @@ import com.mindorks.placeholderview.annotations.swipe.*
 @Layout(R.layout.profile_card_view)
 class TinderProfileCard(
     val user: User,
-    private val swipeCardInterface: SwipeCardInterface,
-    val context: Context
+    private val swipeCardInterface: SwipeCardInterface
 ) {
 
     @com.mindorks.placeholderview.annotations.View(R.id.profile_imageview)
@@ -126,7 +124,7 @@ class TinderProfileCard(
 
     private fun showProfileImage() {
         user.let {
-            Glide.with(context)
+            Glide.with(profileImageView.context)
                 .load(it.picture)
                 .centerCrop()
                 .placeholder(R.drawable.ic_profile_user)
@@ -136,42 +134,42 @@ class TinderProfileCard(
 
     private fun showProfileName() {
         user.let {
-            profileTitle.text = context.getString(R.string.name_header)
+            profileTitle.text = profileTitle.context.getString(R.string.name_header)
             profileData.text = getDisplayName(it.name)
         }
     }
 
     private fun showProfileDOB() {
         user.let {
-            profileTitle.text = context.getString(R.string.birthday_header)
+            profileTitle.text = profileTitle.context.getString(R.string.birthday_header)
             profileData.text = it.dob
         }
     }
 
     private fun showProfileLocation() {
         user.let {
-            profileTitle.text = context.getString(R.string.address_header)
+            profileTitle.text = profileTitle.context.getString(R.string.address_header)
             profileData.text = getDisplayAddress(it.location)
         }
     }
 
     private fun showProfilePhoneNumber() {
         user.let {
-            profileTitle.text = context.getString(R.string.phone_header)
+            profileTitle.text = profileTitle.context.getString(R.string.phone_header)
             profileData.text = it.cell
         }
     }
 
     private fun showProfileEmail() {
         user.let {
-            profileTitle.text = context.getString(R.string.email_header)
+            profileTitle.text = profileTitle.context.getString(R.string.email_header)
             profileData.text = it.email
         }
     }
 
     private fun showProfilePassword() {
         user.let {
-            profileTitle.text = context.getString(R.string.password_header)
+            profileTitle.text = profileTitle.context.getString(R.string.password_header)
             profileData.text = it.password
         }
     }

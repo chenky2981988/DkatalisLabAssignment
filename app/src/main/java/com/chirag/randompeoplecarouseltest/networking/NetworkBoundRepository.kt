@@ -1,5 +1,6 @@
 package com.chirag.randompeoplecarouseltest.networking
 
+import android.text.TextUtils
 import androidx.annotation.MainThread
 import kotlinx.coroutines.flow.flow
 import okhttp3.ResponseBody
@@ -9,6 +10,7 @@ import retrofit2.Response
 /**
  * Created by Chirag Sidhiwala on 7/7/20.
  */
+//This is Network Bound Repository which Parse network response and convert it with ServerResponse
 abstract class NetworkBoundRepository<T> {
     fun asFlow() = flow<ServerResponse<T>> {
 
@@ -31,10 +33,19 @@ abstract class NetworkBoundRepository<T> {
             }
         } catch (e: Exception) {
             // Exception occurred! Emit error
-            val response: Response<T> = Response.error(
-                503,
-                ResponseBody.create(null, "Internet connection is not available.")
-            )
+            val exceptionMessage = e.message
+            val response: Response<T>
+            if (!TextUtils.isEmpty(exceptionMessage)) {
+                response = Response.error(
+                    503,
+                    ResponseBody.create(null, exceptionMessage!!)
+                )
+            } else {
+                response = Response.error(
+                    503,
+                    ResponseBody.create(null, "Internet connection is not available.")
+                )
+            }
             emit(ServerResponse.error(response))
             e.printStackTrace()
         }

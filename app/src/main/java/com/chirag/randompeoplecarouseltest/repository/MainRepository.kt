@@ -25,11 +25,13 @@ import retrofit2.Response
 class MainRepository(private val favouritePeopleDao: FavouritePeopleDao?) {
     fun callRandomUserApi(): Flow<ServerResponse<RandomPeopleModel>> {
         return object : NetworkBoundRepository<RandomPeopleModel>() {
+            // Suspend function to get Random people from API
             override suspend fun getDataFromServer(): Response<RandomPeopleModel> =
                 CustomRetrofitFactory.getApiService().getRandomUser("")
         }.asFlow().flowOn(Dispatchers.IO)
     }
 
+    // Suspend function to call insert People into database
     suspend fun insertFavouritePeople(user: User?) {
         try {
             withContext(Dispatchers.IO) {

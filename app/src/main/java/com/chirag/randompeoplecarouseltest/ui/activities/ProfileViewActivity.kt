@@ -46,7 +46,7 @@ class ProfileViewActivity : AppCompatActivity(), SwipeCardInterface {
                     .setRelativeScale(0.01f)
             )
         mSwipView.disableTouchSwipe()
-        mSwipView.addView(TinderProfileCard(user, this, this))
+        mSwipView.addView(TinderProfileCard(user, this))
 
     }
 

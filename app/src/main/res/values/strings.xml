@@ -7,4 +7,5 @@
     <string name="phone_header">My phone number is</string>
     <string name="email_header">My email address is</string>
     <string name="password_header">My password is</string>
+    <string name="favourite_people_list_empty">Favourite people list empty!</string>
 </resources>

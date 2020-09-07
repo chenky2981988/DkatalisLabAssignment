@@ -13,9 +13,11 @@ import com.chirag.randompeoplecarouseltest.model.User
  */
 @Dao
 interface FavouritePeopleDao {
+    //Insert People to DB
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
 
+    //Get List of all favourite people
     @Query("SELECT * FROM FAVOURITE_PEOPLE_TABLE")
     fun getFavouritePeopleList(): LiveData<List<User>>
 }

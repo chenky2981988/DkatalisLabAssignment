@@ -25,6 +25,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 
+/*
+ * Activity to display Tinder like Swipe card. On swipe right people will be added to Database and load new people
+ * On swipe left people will be rejected and load new random people
+ */
 @ExperimentalCoroutinesApi
 @FlowPreview
 @InternalCoroutinesApi
@@ -39,6 +43,7 @@ class MainActivity : AppCompatActivity(), SwipeCardInterface {
     @BindView(R.id.favourite_button)
     lateinit var favouriteButton: Button
 
+    //ViewModel object for MainActivity
     private val mainViewModel: MainViewModel by lazy {
         ViewModelProvider(
             this,
@@ -57,6 +62,7 @@ class MainActivity : AppCompatActivity(), SwipeCardInterface {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
+        //Build SwipeCard PlaceHolder View with required properties.
         mSwipeView.getBuilder<SwipePlaceHolderView, SwipeViewBuilder<SwipePlaceHolderView>>()
             //                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
             .setDisplayViewCount(3)
@@ -73,14 +79,14 @@ class MainActivity : AppCompatActivity(), SwipeCardInterface {
                     .setRelativeScale(0.01f)
             )
 
+        //Favourite Button click listener
         favouriteButton.setOnClickListener {
-            /*mainViewModel.getListOfFavouritePeople()?.observe(this, Observer {
-                Log.d("TAG","list size : " + it.size)
-            })*/
+            //Start FavouritePeople list Activity
             val favouriteListIntent = Intent(this, FavouritePeopleActivity::class.java)
             startActivity(favouriteListIntent)
         }
 
+        //Get Random user on initialize
         callGetRandomUser()
 
     }
@@ -90,6 +96,7 @@ class MainActivity : AppCompatActivity(), SwipeCardInterface {
     }
 
     private fun initListener() {
+        //Observing random userlive data from cloud
         mainViewModel.randomUserLiveData.observe(this, {
             when (it) {
                 is ServerResponse.Loading -> {
@@ -101,7 +108,7 @@ class MainActivity : AppCompatActivity(), SwipeCardInterface {
                 is ServerResponse.Success -> {
                     hideProgressBar()
                     //callGetRandomUser() // To give continuous loading of new Random user
-                    mSwipeView.addView(TinderProfileCard(it.data.results[0].user, this, this))
+                    mSwipeView.addView(TinderProfileCard(it.data.results[0].user, this))
 
                     Thread {
                         try {
@@ -145,11 +152,13 @@ class MainActivity : AppCompatActivity(), SwipeCardInterface {
         window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 
+    //Override interface method on swipe right
     override fun onAccepted(user: User) {
         mainViewModel.insertFavouritePeople(user)
         mainViewModel.getRandomUser()
     }
 
+    //Override interface method on swipe left
     override fun onRejected() {
         mainViewModel.getRandomUser()
     }

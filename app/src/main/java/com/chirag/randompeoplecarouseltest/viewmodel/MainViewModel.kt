@@ -27,6 +27,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     val randomUserLiveData: LiveData<ServerResponse<RandomPeopleModel>> =
         randomUserMutableLiveData
 
+    // Get Random user from API
     fun getRandomUser() {
         viewModelScope.launch {
             mainRepository.callRandomUserApi().collect {
@@ -35,6 +36,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         }
     }
 
+    //Insert people in favourite people database table
     fun insertFavouritePeople(user: User) {
         viewModelScope.launch {
             mainRepository.insertFavouritePeople(user)

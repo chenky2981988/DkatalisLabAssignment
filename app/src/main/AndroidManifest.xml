@@ -12,8 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.ProfileViewActivity"></activity>
-        <activity android:name=".ui.activities.FavouritePeopleActivity" />
+        <activity
+            android:name=".ui.activities.ProfileViewActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.activities.FavouritePeopleActivity"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".ui.activities.MainActivity"
             android:screenOrientation="sensorPortrait">
